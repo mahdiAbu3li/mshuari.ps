@@ -1,0 +1,28 @@
+
+#nav-login {
+    padding: .5rem 2rem;
+    margin-right: 20px; 
+    
+    color: white;
+    max-width: 6rem;
+}
+#nav-sign {
+    color: white;
+     padding: .5rem 1rem;
+      max-width: 6rem;;   
+}
+
+.jumbotron {
+    color: white;
+   
+    background-color: transparent;
+   
+  
+}
+p{
+width: 17rem;
+}
+html ,body{
+    background-image: url(road1.jpg);
+    /* height: 100%; */
+}
