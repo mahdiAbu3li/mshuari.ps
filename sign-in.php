@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -17,9 +16,9 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-    
 
-    
+
+
 
         <a class="navbar-brand" href="homePage.html">MSHUARI.PS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,12 +86,12 @@
                                 <label for="exampleInputEmail1">Confirm Password</label>
                                 <input type="password" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="rewrite your password">
                             </div>
-                            <div class="form-group ">   
-                            
+                            <div class="form-group ">
 
-                            <label for="exampleInputEmail1">Your Phone Number</label>
-                            <input type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EX:059x-xx-xx-xx">
-                        </div>
+
+                                <label for="exampleInputEmail1">Your Phone Number</label>
+                                <input type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EX:059x-xx-xx-xx">
+                            </div>
 
                             <div class="form-row">
                                 <div class="col-3 ">
@@ -101,12 +100,12 @@
                                     <select id="day" class="form-control form-control-sm">
                                         <option selected>Day</option>
                                         <?php
-                                        
-                                        for($i = 1 ; $i < 32 ; $i++){
+
+                                        for ($i = 1; $i < 32; $i++) {
                                             echo "<option>$i</option>";
                                         }
                                         ?>
-                                       
+
                                     </select>
                                 </div>
                                 <div class="col-3">
@@ -128,8 +127,8 @@
                                             'November',
                                             'December',
                                         );
-                                        for($i = 0 ; $i < 12 ; $i++){
-                                            echo "<option>".$months[$i]."</option>";
+                                        for ($i = 0; $i < 12; $i++) {
+                                            echo "<option>" . $months[$i] . "</option>";
                                         }
                                         ?>
                                     </select>
@@ -139,28 +138,28 @@
                                     <select id="year" class="form-control form-control-sm">
                                         <option selected>Year</option>
                                         <?php
-                                        for($i = 1900 ; $i < 2020 ; $i++){
+                                        for ($i = 1900; $i < 2020; $i++) {
                                             echo "<option>$i</option>";
                                         }
                                         ?>
                                     </select>
                                 </div>
                             </div>
-                            
-                           
 
-                           
+
+
+
                             <div class="form-row mt-4">
                                 <div class="col-3 "></div>
                                 <div class="col-6">
                                     <button type="submit" class="btn btn-primary btn-block mt-2">Sign UP </button>
 
-                                    <a id="s" href="login-ps.html" class="btn  btn-block mt-2 ">LOGIN</a>
+                                    <a id="s" href="login-ps.html" class="btn btn-outline-success btn-block mt-2 ">LOGIN</a>
                                 </div>
                                 <div class="col-3"></div>
 
                             </div>
-                            
+
 
 
 
