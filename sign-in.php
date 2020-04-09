@@ -54,7 +54,7 @@
                     <div class="card-body">
 
 
-                        <form>
+                        <form action="main.php">
 
                             <div class="form-row form-group">
                                 <div class="col ">

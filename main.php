@@ -28,8 +28,10 @@
         <a class="nav-item nav-link ml-auto mr-1" href="#">Contests</a>
       </div>
       <div class="navbar-nav ">
+      <!-- <button type="button" class="btn btn-outline-secondary" href="http://localhost:8080/transfer/homePage.html">SIGN OUT</button> -->
+      <a href="homePage.html" class=" btn btn-outline-secondary " role="button" aria-pressed="true">Sign out</a>
 
-        <a id="nav-sign" class="nav-item nav-link bg-primary rounded ml-auto mr-1" href="homePage.html">Sign out</a>
+        <!-- <button type="button" id="nav-sign" class="nav-item nav-link btn btn-outline-primary rounded ml-auto mr-1" href="homePage.html">Sign out</button> -->
       </div>
     </div>
 
@@ -57,7 +59,7 @@
             <!-- <p class="d-inline">___________________________</p><br> -->
             <!-- </div> -->
             <!-- <div class="row"> -->
-            <i class="fas fa-taxi fa-lg fa-fw mt-3 ml-2"></i>
+            <i class="fas fa-home fa-lg fa-fw mt-3 ml-2"></i>
             <a class="nav-item nav-link d-inline" id="nav-available-trip-tab" data-toggle="tab" href="#nav-available-trip" role="tab" aria-controls="nav-available-trip" aria-selected="false">Available Trips</a><br />
             <!-- </div> -->
             <!-- <div class="row"> -->
@@ -79,10 +81,10 @@
           <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="card">
               <div class="card-header">
-              <h1 class="display-4 text-center mb-4">My Profile</h1>
+                <h1 class="display-4 text-center mb-4">My Profile</h1>
               </div>
               <div class="card-body">
-                
+
 
                 <div class="container">
                   <div class="row">
@@ -241,21 +243,34 @@
                 <div class="row mb-5">
                   <form class="form-inline my-2 my-lg-0">
                     <div class="col">
-                      <label class="form-control-lg" style="color: red;">Go to</label>
-                      <input class="form-control mr-sm-2" type="search" placeholder="City" />
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Start city</label>
+                        <input type="password" class="form-control w-75" id="exampleInputPassword1" placeholder="City">
+                      </div>
                     </div>
 
                     <div class="col">
-                      <label class="form-control-lg" style="color: red;">Date</label>
-                      <input class="form-control mr-sm-2" type="date" placeholder="Day" />
+                      <div class="form-group">
+                        <label for="#">End city</label>
+                        <input class="form-control mr-sm-2 w-75" type="search" placeholder="City" />
+                      </div>
                     </div>
                     <div class="col">
-                      <label class="form-control-lg" style="color: red;">Time</label>
+                      <div class="form-group">
+
+                        <label  for="#">Date</label>
+                        <input class="form-control mr-sm-2" type="date" placeholder="Day" />
+                      </div>
+                    </div>
+                    <div class="col">
+                    <div class="form-group">
+                      <label  for="#">Time</label>
                       <input class="form-control mr-sm-2" type="time" placeholder="Clock" />
                     </div>
-                    <div class="col"></div>
+                    </div>
+
                     <div class="col pt-4">
-                      <label class="form-control-lg" style="color: red;"></label>
+                      <label  style="color: red;"></label>
                       <button class="btn btn-outline-success btn-lg my-2 my-sm-0 " type="submit">
                         Find Trip
                       </button>
@@ -386,10 +401,10 @@
 
           <div class="tab-pane fade show active" id="nav-creat-trip" role="tabpanel" aria-labelledby="nav-create-trip-tab">
             <div class="card">
-              <h5 class="card-header">Create My Trip</h5>
+              <h5 class="card-header display-4" >Create My Trip</h5>
               <div class="card-body">
-                <h5 class="card-title">Enter your car information</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <!-- <h5 class="card-title">Enter your car information</h5> -->
+                <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
                 <div class="row">
                   <div class="col">
                     <h4>
@@ -404,7 +419,7 @@
                   </div>
                   <div class="col">
                     <label for="validationDefault01">The address within the city</label>
-                    <input type="text" class="form-control" id="validationDefault01" placeholder="street"  required>
+                    <input type="text" class="form-control" id="validationDefault01" placeholder="street" required>
                   </div>
 
                   <div class="col">
@@ -482,7 +497,12 @@
                     </div>
                   </div>
                 </div>
-                <a href="#" class="btn btn-primary">Ctreate Trip</a>
+                <div class="d-flex flex-row-reverse mt-5">
+              
+               <a href="#" class="btn btn-primary">Ctreate Trip</a>
+               
+              </div>
+                
               </div>
 
             </div>
