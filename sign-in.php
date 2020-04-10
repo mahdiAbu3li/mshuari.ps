@@ -94,56 +94,12 @@
                             </div>
 
                             <div class="form-row">
-                                <div class="col-3 ">
+                                <div class="col-5 ">
 
-                                    <label for="day">Day</label>
-                                    <select id="day" class="form-control form-control-sm">
-                                        <option selected>Day</option>
-                                        <?php
-
-                                        for ($i = 1; $i < 32; $i++) {
-                                            echo "<option>$i</option>";
-                                        }
-                                        ?>
-
-                                    </select>
+                                    <label for="date">Date of Birth</label>
+                                    <input type="date" class="form-control" id="date">
                                 </div>
-                                <div class="col-3">
-                                    <label for="mounth">Mounth</label>
-                                    <select id="mounth" class="form-control form-control-sm">
-                                        <option selected>Mounth</option>
-                                        <?php
-                                        $months = array(
-                                            'January',
-                                            'February',
-                                            'March',
-                                            'April',
-                                            'May',
-                                            'June',
-                                            'July ',
-                                            'August',
-                                            'September',
-                                            'October',
-                                            'November',
-                                            'December',
-                                        );
-                                        for ($i = 0; $i < 12; $i++) {
-                                            echo "<option>" . $months[$i] . "</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                                <div class="col-3">
-                                    <label for="year">Year</label>
-                                    <select id="year" class="form-control form-control-sm">
-                                        <option selected>Year</option>
-                                        <?php
-                                        for ($i = 1900; $i < 2020; $i++) {
-                                            echo "<option>$i</option>";
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
+                            
                             </div>
 
 
