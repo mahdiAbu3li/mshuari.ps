@@ -496,6 +496,7 @@
                     <button type="submit" class="btn btn-primary">Ctreate Trip</button>
 
                 </form>
+                
               </div>
 
             </div>
