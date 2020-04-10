@@ -39,37 +39,47 @@
   </nav>
 
   <div class="container-fluid h-100 mt-5 ">
-    <div class="row h-100">
-      <div class="col-5 col-sm-3 col-md-2" style="background-color: white;">
+    <div class="row h-100 ">
+      <a class="btn btn-primary" data-toggle="collapse" href="#1" role="button" aria-expanded="false" aria-controls="collapseExample">
+        
+     
+
+      </a><br>
+
+      <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-2 collapse " id="1" style="background-color: white;">
         <!-- <div class="form-group has-search  pt-4">
           <span class="fa fa-search form-control-feedback d-inline"></span>
           <input type="text" class="form-control " placeholder="Search">
-        </div> -->
+        </div> --> 
+        
         <nav>
-          <div class="nav flex-column position-fixed  mt-3 d-inline" id="nav-tab" role="tablist">
+          <div class="nav flex-column  mt-3 d-inline" id="nav-tab" role="tablist">
 
-            <i class="fas fa-home fa-lg fa-fw mt-3 ml-2"></i>
-            <a class="nav-item nav-link d-inline" id="nav-available-trip-tab" data-toggle="tab" href="#nav-available-trip" role="tab" aria-controls="nav-available-trip" aria-selected="false">Home</a><br />
-
-
-            <i class="fas fa-user-circle fa-lg fa-fw mt-3  ml-2"></i>
-            <a class="nav-item nav-link d-inline" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a><br />
+           
 
 
-            <i class="fas fa-taxi fa-lg fa-fw mt-3 ml-2"></i>
-            <a class="nav-item nav-link d-inline" id="nav-create-trip-tab" data-toggle="tab" href="#nav-creat-trip" role="tab" aria-controls="nav-create-trip" aria-selected="false">Create Trip</a><br />
+              <i class="fas fa-home fa-lg fa-fw mt-3 ml-2"></i>
+              <a class="nav-item nav-link d-inline" id="nav-available-trip-tab" data-toggle="tab" href="#nav-available-trip" role="tab" aria-controls="nav-available-trip" aria-selected="false">Home</a><br />
+
+
+              <i class="fas fa-user-circle fa-lg fa-fw mt-3  ml-2"></i>
+              <a class="nav-item nav-link d-inline" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a><br />
+
+
+              <i class="fas fa-taxi fa-lg fa-fw mt-3 ml-2"></i>
+              <a class="nav-item nav-link d-inline" id="nav-create-trip-tab" data-toggle="tab" href="#nav-creat-trip" role="tab" aria-controls="nav-create-trip" aria-selected="false">Create Trip</a><br />
 
 
 
-            <i class="fas fa-book fa-lg fa-fw mt-3 ml-2"></i>
-            <a class="nav-item nav-link  d-inline " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false">
-              History</a><br>
-
+              <i class="fas fa-book fa-lg fa-fw mt-3 ml-2"></i>
+              <a class="nav-item nav-link  d-inline " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="false">
+                History</a><br>
+            
           </div>
 
         </nav>
       </div>
-      <div class="col-7 col-sm-9 col-md-10 pt-4" style="background-color: whitesmoke;">
+      <div class="col pt-3" style="background-color: whitesmoke;">
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
             <div class="card">
@@ -201,7 +211,7 @@
 
 
 
-          <div class="tab-pane fade" id="nav-available-trip" role="tabpanel" aria-labelledby="nav-contact-tab">
+          <div class="tab-pane fade show active" id="nav-available-trip" role="tabpanel" aria-labelledby="nav-contact-tab">
 
             <div class="card">
               <div class="card-header">
@@ -371,7 +381,7 @@
 
 
 
-          <div class="tab-pane fade show active" id="nav-creat-trip" role="tabpanel" aria-labelledby="nav-create-trip-tab">
+          <div class="tab-pane fade " id="nav-creat-trip" role="tabpanel" aria-labelledby="nav-create-trip-tab">
             <div class="card">
               <h5 class="card-header display-4">Create My Trip</h5>
               <div class="card-body">
