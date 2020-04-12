@@ -365,7 +365,8 @@ session_start()
             $(document).ready(function() {
         $('.pagination a').click(function() {
             var o="o"+sessionStorage.getItem("wp");
-            document.getElementById(o).focus(); 
+            alert("sss");
+            document.getElementById("o1").focus(); 
         
           return fasle;
           });
