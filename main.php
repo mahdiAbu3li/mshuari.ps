@@ -176,6 +176,7 @@ session_start()
                 $username = "root";
                 $password = "";
                 $dbname = "mshwari.ps";
+              
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
                 if ($conn->connect_error)
@@ -447,9 +448,11 @@ session_start()
                   </form>
                 </div>
 
+
                 <script>
                   sessionStorage.setItem("wp", 1);
                 </script>
+
 
                 <?php
 
@@ -465,7 +468,7 @@ session_start()
                   die("Connection failed: " . $conn->connect_error);
                 }
 
-                $sql = "SELECT * FROM user,trips WHERE user.id = userid  ";
+                $sql = "SELECT * ,trips.id as tid FROM user,trips WHERE user.id = userid  ";
 
                 if (isset($_GET['day']) && $_GET['day'] != '') {
                   $sql .= " and trips.date1 = '" . $_GET['day'] . "'";
@@ -504,20 +507,23 @@ session_start()
                  <li class="page-item "><a data-toggle ="tab" class="page-link" href=".p0">Previous</a></li>';
 
                   $ce = 0;
-                  $_SESSION["allpages"] = (int) (($c / 15) + $ce);;
-                  $_SESSION["wp"] = 1;
 
-                  // echo  $_SESSION["allpages"];
-                  include('main-jq.php');
-
+                  $_SESSION["allpages"]=(int)( ($c / 15) + $ce);;
+                  $_SESSION["wp"]=1;
+                 
+                 // echo  $_SESSION["allpages"];
+               
+                 
                   if ((int) ($c % 15) > 0)
                     $ce = 1;
-
+                
                   for ($i = 0; $i < (int) ($c / 15) + $ce; $i++) {
-                    echo '<li id= "o' . ($i + 1) . '"  class="page-item "><a data-toggle ="tab" class="page-link" " href=".p' . ($i + 1) . "\""
-                      . '">' . ($i + 1) . '</a></li>';
+                    echo '<li   class="page-item "><a class= "page-link o'.($i + 1).'"data-toggle ="tab"  href=".p'.($i + 1)."\""
+                    . '">' . ($i + 1) . '</a></li>';
                   }
-                  //  <li class="page-item"><a class="page-link" " href=".m11" >Previous</a></li>
+              //    include('main-jq.php');
+                //  <li class="page-item"><a class="page-link" " href=".m11" >Previous</a></li>
+
                   echo ' 
                     <li class="page-item"><a data-toggle ="tab" class="page-link" href=".p-1">Next</a></li>
                     </ul>
@@ -546,7 +552,9 @@ session_start()
 
 
                     echo '</p>
+
                         <button class="btn btn-success">Get in the car</button>
+
                        <p class="card-text">
                          <small class="text-muted"
                            >Last updated 3 mins ago</small
@@ -576,23 +584,25 @@ session_start()
 
                   echo ' <nav aria-label="Page navigation example"> 
                 <ul class="pagination justify-content-center">
-                <li class="page-item"><a class="page-link" href="#">Previous</a></li>';
+                <li class="page-item"><a class="page-link" href=".p0">Previous</a></li>';
                   $ce = 0;
                   if ((int) ($c % 15) > 0) {
                     $ce = 1;
                     for ($i = 0; $i < (int) ($c / 15) + $ce; $i++) {
-                      echo '<li class="page-item"><a class="page-link" href="#';
-                      echo ($i + 1) . '">' . ($i + 1) . '</a></li>';
+
+                      echo '<li   class="page-item "><a class= "page-link o'.($i + 1).'"data-toggle ="tab"  href=".p'.($i + 1)."\""
+                      . '">' . ($i + 1) . '</a></li>';
                     }
-
-                    echo ' 
-                   <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                  echo ' 
+                   <li class="page-item"><a class="page-link" href=".p-1">Next</a></li>
                    </ul>
-               </nav> ';
-                  }
-                } else echo "<h1>NO DATA FOUND</h1>"
+               </nav> ';  }
+               
+                }
+                else echo "<h1>NO DATA FOUND</h1>";
 
 
+                include('main-jq.php');
                 ?>
 
                 <!-- 
