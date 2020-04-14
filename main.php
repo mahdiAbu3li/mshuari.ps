@@ -49,7 +49,6 @@ session_start()
       <a class="btn btn-primary" data-toggle="collapse" href="#1" role="button" aria-expanded="false" aria-controls="collapseExample">
 
 
-
       </a><br>
 
       <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-2 collapse " id="1" style="background-color: white;">
@@ -641,6 +640,7 @@ session_start()
                     <button type="submit" class="btn btn-primary">Ctreate Trip</button>
 
                 </form>
+                
               </div>
 
             </div>
