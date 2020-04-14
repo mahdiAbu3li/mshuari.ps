@@ -4,7 +4,7 @@ $servername="127.0.0.1";
 session_start();
 $username="root";
 
-$password="root";
+$password="";
 $dbname = "mshwari.ps";
 $conn= new mysqli($servername,$username,$password,$dbname);
 // sql to create table
@@ -22,7 +22,7 @@ $stmt->execute();
 
 $stmt->close();
 $conn->close();
-header('Location: http://localhost:80/mshuari.ps/main.php');
+header('Location: http://localhost:8080/mshuari.ps/main.php');
 
 
 

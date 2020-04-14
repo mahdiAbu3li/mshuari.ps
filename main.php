@@ -2,21 +2,22 @@
 session_start()
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8" />
-  <meta name="vieort" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- icon -->
   <script src="https://kit.fontawesome.com/4f1630567e.js" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
-  <link rel="stylesheet" href="http://localhost:80/mshuari.ps/style-main.css">
-  
+  <link rel="stylesheet" href="http://localhost:8080/mshuari.ps/style-main.css">
+
   <title>mshuari.ps</title>
 </head>
 
@@ -58,7 +59,7 @@ session_start()
         </div> -->
 
         <nav>
-          <div class="nav flex-column  mt-3 d-inline" id="nav-tab" role="tablist">
+          <div class="nav flex-column position-fixed mt-3 d-inline" id="nav-tab" role="tablist">
 
 
 
@@ -96,7 +97,7 @@ session_start()
 
                 $servername = "127.0.0.1";
                 $username = "root";
-                $password = "root";
+                $password = "";
                 $dbname = "mshwari.ps";
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -109,24 +110,62 @@ session_start()
                 $f = false;
                 if ($result->num_rows > 0) {
                   // output data of each row
-                  while ($row = $result->fetch_assoc()) {
-                    echo '
-                    <div class="card my-3">
-                    <div class="card-body"> ';
-                    echo "<p> Driver name :" . $row['first_name'] . " " . $row['last_name'] . "  &nbsp;&nbsp;&nbsp; Date :" . $row['date1'] . " &nbsp;&nbsp;&nbsp;  
-                    time :" . $row['time1'] . "  &nbsp;&nbsp;&nbsp; From :"
-                      . $row['from1'] . "  &nbsp;&nbsp;&nbsp; To :" . $row['to1'] . "</p>";
-                    echo ' 
-                    </div>
-                    </div>
-                    ';
-                  }
-                }
 
+                  echo '
+                   <table class="table">
+                   <thead class="thead-dark">
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">First Name</th>
+                      <th scope="col">Last Name</th>
+                      <th scope="col">From</th>
+                      <th scope="col">To</th>
+                      <th scope="col">Time</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Undo</th>
+                    </tr>
+                   </thead>
+                   ';
+                  $c = 1;
+                  while ($row = $result->fetch_assoc()) {
+                    //   echo '
+                    //   <div class="card my-3">
+                    //   <div class="card-body"> ';
+                    //   echo "<p> Driver name :" . $row['first_name'] . " " . $row['last_name'] . "  &nbsp;&nbsp;&nbsp; Date :" . $row['date1'] . " &nbsp;&nbsp;&nbsp;  
+                    //   time :" . $row['time1'] . "  &nbsp;&nbsp;&nbsp; From :"
+                    //     . $row['from1'] . "  &nbsp;&nbsp;&nbsp; To :" . $row['to1'] . "</p>";
+                    //   echo ' 
+                    //   <button type="button" class="btn btn-danger">Undo</button>
+                    //   </div>
+                    //   </div>
+                    //   ';
+
+                    echo '                  
+                   <tbody>
+                    <tr>
+                      <th scope="row">' . $c++ . '</th>
+                      <td> ' . $row["first_name"] . '</td>
+                      <td> ' . $row["last_name"] . '</td>
+                      <td> ' . $row["date1"] . '</td>
+                      <td> ' . $row["time1"] . '</td>
+                      <td> ' . $row["from1"] . '</td>
+                      <td> ' . $row["to1"] . '</td>
+                    <td><button type="button" class="btn btn-danger">Undo</button>
+                    </td>
+
+                    </tr>                                    
+                  ';
+                  }
+                  echo '   
+                </tbody>
+               </table>
+
+               ';
+                }
                 ?>
               </div>
             </div>
-            <div class="card">
+            <div class="card mt-5">
               <div class="card-header">
                 <p class="display-4">History of your trips - when Driver</p>
               </div>
@@ -134,42 +173,74 @@ session_start()
                 <?php
 
                 $servername = "127.0.0.1";
-
                 $username = "root";
-
-                $password = "root";
+                $password = "";
                 $dbname = "mshwari.ps";
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
-                if ($conn->connect_error) {
+                if ($conn->connect_error)
                   die("Connection failed: " . $conn->connect_error);
-                }
 
-                $sql = "SELECT * FROM trips WHERE trips.userid =" . $_SESSION["id"];
-                // echo $sql;
+                  $sql = "SELECT * FROM trips WHERE trips.userid =" . $_SESSION["id"];
+
                 $result = $conn->query($sql);
                 $f = false;
                 if ($result->num_rows > 0) {
                   // output data of each row
-                  while ($row = $result->fetch_assoc()) {
-                    echo '
-                    <div class="card my-3">
-                    <div class="card-body"> ';
-                    echo "Date :" . $row['date1'] . " &nbsp;&nbsp;&nbsp;  
-                    time :" . $row['time1'] . "  &nbsp;&nbsp;&nbsp; From :"
-                      . $row['from1'] . "  &nbsp;&nbsp;&nbsp; To :" . $row['to1'] . "</p>";
-                    echo ' 
-                    </div>
-                    </div>
-                    ';
-                  }
-                }
 
+                  echo '
+   <table class="table">
+   <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+  
+      <th scope="col">From</th>
+      <th scope="col">To</th>
+      <th scope="col">Time</th>
+      <th scope="col">Date</th>
+      <th scope="col">Undo</th>
+    </tr>
+   </thead>
+   ';
+                  $c = 1;
+                  while ($row = $result->fetch_assoc()) {
+                    //   echo '
+                    //   <div class="card my-3">
+                    //   <div class="card-body"> ';
+                    //   echo "<p> Driver name :" . $row['first_name'] . " " . $row['last_name'] . "  &nbsp;&nbsp;&nbsp; Date :" . $row['date1'] . " &nbsp;&nbsp;&nbsp;  
+                    //   time :" . $row['time1'] . "  &nbsp;&nbsp;&nbsp; From :"
+                    //     . $row['from1'] . "  &nbsp;&nbsp;&nbsp; To :" . $row['to1'] . "</p>";
+                    //   echo ' 
+                    //   <button type="button" class="btn btn-danger">Undo</button>
+                    //   </div>
+                    //   </div>
+                    //   ';
+
+                    echo '                  
+                    <tbody>
+                      <tr>
+                        <th scope="row">' . $c++ . '</th>
+                 
+                        <td> ' . $row["date1"] . '</td>
+                        <td> ' . $row["time1"] . '</td>
+                        <td> ' . $row["from1"] . '</td>
+                        <td> ' . $row["to1"] . '</td>
+                        <td><button type="button" class="btn btn-danger">Undo</button>
+                      
+                      </tr>                                    
+                    ';
+                                    }
+                                    echo '   
+                  </tbody>
+                  </table>
+
+                  ';
+                }
                 ?>
               </div>
             </div>
           </div>
-
+          
           <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="card">
               <div class="card-header">
@@ -199,7 +270,7 @@ session_start()
 
                   $username = "root";
 
-                  $password = "root";
+                  $password = "";
                   $dbname = "mshwari.ps";
                   $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -220,7 +291,6 @@ session_start()
                       $_SESSION["email"] = $row['email'];
                       $_SESSION["birthday"] = $row['birthday'];
                       $_SESSION["pass"] = $row['pass'];
-    
                     }
                   }
 
@@ -230,49 +300,67 @@ session_start()
                     <div class="col-2"></div>
                     <div class="col-8">
 
-                      <form action="update.php">
+                      <form class="needs-validation" action="update.php" novalidate>
 
                         <div class="form-row form-group">
                           <div class="col ">
 
                             <label for="exampleInputEmail1">First Name</label>
-                            <input name="fname" value="<?php echo $_SESSION['fname'] ?>" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="first name">
-
+                            <input name="fname" value="<?php echo $_SESSION['fname'] ?>" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="first name" required>
+                            <div class="invalid-feedback">
+                              Please choose a first name.
+                            </div>
                           </div>
                           <div class="col">
 
 
                             <label for="exampleInputEmail1">Last Name</label>
-                            <input name="lname" value="<?php echo $_SESSION['lname'] ?>" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="last name">
-
+                            <input name="lname" value="<?php echo $_SESSION['lname'] ?>" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="last name" required>
+                            <div class="invalid-feedback">
+                              Please choose a last name.
+                            </div>
                           </div>
                         </div>
                         <div class="form-group">
 
                           <label for="exampleInputEmail1">Email address</label>
-                          <input  name="email" value="<?php echo $_SESSION['email'] ?>" type="email" class="form-control " disabled  id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-
+                          <input name="email" value="<?php echo $_SESSION['email'] ?>" type="email" class="form-control " disabled id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                          <div class="invalid-feedback">
+                            Please choose a username.
+                          </div>
                         </div>
                         <div class="form-group">
-                          <label for="exampleInputEmail1">Password</label>
-                          <input name="pass" value="" type="password" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
+                          <label for="pass">Password</label>
+                          <input name="pass" value=" " type="password" class="form-control " id="pass" aria-describedby="emailHelp" placeholder="Enter Password" required>
+                          <div class="invalid-feedback ">
+                            Please choose a password more than 6 character.
+                          </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" style="position: relative">
 
-                          <label for="exampleInputEmail1">Confirm Password</label>
-                          <input type="password" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="rewrite your password">
+                          <label for="confirmpass">Confirm Password</label>
+                          <input name="pass2" type="password" class="form-control " id="confirmpass" aria-describedby="confirmpass" placeholder="rewrite your password" required>
+                          <div class="invalid-feedback ">
+                            Please confirm your password.
+                          </div>
                         </div>
                         <div class="form-group ">
 
 
                           <label for="exampleInputEmail1">Your Phone Number</label>
-                          <input name="phone" value="<?php echo $_SESSION['phone'] ?>" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EX:059x-xx-xx-xx">
+                          <input name="phone" value="<?php echo $_SESSION['phone'] ?>" type="text" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EX:059x-xx-xx-xx" required>
+                          <div class="invalid-feedback">
+                            Please write your phone.
+                          </div>
                         </div>
 
                         <div class="form-row">
                           <div class="col-5 ">
                             <label for="date">Date of Birth</label>
-                            <input name="birth" value="<?php echo $_SESSION['birthday'] ?>" type="date" class="form-control" id="date">
+                            <input name="birth" value="<?php echo $_SESSION['birthday'] ?>" type="date" class="form-control" id="date" required>
+                            <div class="invalid-feedback">
+                              Please choose a birthday.
+                            </div>
                           </div>
 
                         </div>
@@ -317,34 +405,34 @@ session_start()
                 <h4 class="display-4 text-center">Here you can find all Available Trips</h4>
               </div>
               <div class="card-body">
-          
+
                 <!-- <p class="lead">Find your trip </p> -->
                 <div class="row mb-5">
                   <form action="main.php" class="form-inline my-2 my-lg-0">
                     <div class="col">
                       <div class="form-group">
                         <label for="exampleInputPassword1">Start city</label>
-                        <input id="scity" name ="scity" type="text" class="form-control w-75" id="exampleInputPassword1" placeholder="City">
+                        <input id="scity" name="scity" type="text" class="form-control w-75" id="exampleInputPassword1" placeholder="City">
                       </div>
                     </div>
 
                     <div class="col">
                       <div class="form-group">
                         <label for="#">End city</label>
-                        <input id="ecity" name ="ecity" class="form-control mr-sm-2 w-75" type="text" placeholder="City" />
+                        <input id="ecity" name="ecity" class="form-control mr-sm-2 w-75" type="text" placeholder="City" />
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-group">
 
                         <label for="#">Date</label>
-                        <input id="day" name = 'day' class="form-control mr-sm-2" type="date" placeholder="Day" />
+                        <input id="day" name='day' class="form-control mr-sm-2" type="date" placeholder="Day" />
                       </div>
                     </div>
                     <div class="col">
                       <div class="form-group">
                         <label for="#">Time</label>
-                        <input id="clock"  name ='clock'class="form-control mr-sm-2 w-100" type="time" placeholder="Clock" />
+                        <input id="clock" name='clock' class="form-control mr-sm-2 w-100" type="time" placeholder="Clock" />
                       </div>
                     </div>
 
@@ -359,26 +447,17 @@ session_start()
                   </form>
                 </div>
 
-             <script>   sessionStorage.setItem("wp", 1);
-            
-            $(document).ready(function() {
-        $('.pagination a').click(function() {
-            var o="o"+sessionStorage.getItem("wp");
-            alert("sss");
-            document.getElementById("o1").focus(); 
-        
-          return fasle;
-          });
-      });
-            </script>
-       
+                <script>
+                  sessionStorage.setItem("wp", 1);
+                </script>
+
                 <?php
 
                 $servername = "127.0.0.1";
 
                 $username = "root";
 
-                $password = "root";
+                $password = "";
                 $dbname = "mshwari.ps";
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -388,63 +467,57 @@ session_start()
 
                 $sql = "SELECT * FROM user,trips WHERE user.id = userid  ";
 
-                if(isset($_GET['day']) && $_GET['day']!='')
-                {
-                  $sql.=" and trips.date1 = '".$_GET['day']."'";
-               echo '<script>  document.getElementById("day").value =\'';
-            echo   $_GET['day'];
-            echo'\' </script>';
-               
+                if (isset($_GET['day']) && $_GET['day'] != '') {
+                  $sql .= " and trips.date1 = '" . $_GET['day'] . "'";
+                  echo '<script>  document.getElementById("day").value =\'';
+                  echo   $_GET['day'];
+                  echo '\' </script>';
                 }
-                if(isset($_GET['clock']) && $_GET['clock']!='')
-                {
-                  $sql.=" and trips.time1 = '".$_GET['clock']."'";
-                  echo '<script>  document.getElementById("clock").value = \''.$_GET['clock'].'\'; </script>';
+                if (isset($_GET['clock']) && $_GET['clock'] != '') {
+                  $sql .= " and trips.time1 = '" . $_GET['clock'] . "'";
+                  echo '<script>  document.getElementById("clock").value = \'' . $_GET['clock'] . '\'; </script>';
                 }
-                if(isset($_GET['scity']) && $_GET['scity']!='')
-                {
-                  $sql.=" and trips.from1 = '".$_GET['scity']."'";
+                if (isset($_GET['scity']) && $_GET['scity'] != '') {
+                  $sql .= " and trips.from1 = '" . $_GET['scity'] . "'";
                   echo '<script>  document.getElementById("scity").value = \'';
                   echo   $_GET['scity'];
-                  echo'\' </script>';
-                     
+                  echo '\' </script>';
                 }
-                if(isset($_GET['ecity']) && $_GET['ecity']!='')
-                {
-                  echo "<script>  document.getElementById('ecity').value = '".$_GET['ecity']."'; </script>";
-                  $sql.=" and trips.to1 = '".$_GET['ecity']."'";
+                if (isset($_GET['ecity']) && $_GET['ecity'] != '') {
+                  echo "<script>  document.getElementById('ecity').value = '" . $_GET['ecity'] . "'; </script>";
+                  $sql .= " and trips.to1 = '" . $_GET['ecity'] . "'";
                 }
-                
-          
+
+
                 echo $sql;
                 $result = $conn->query($sql);
                 $f = false;
                 $count = 0;
-               
-             
+
+
                 if ($result->num_rows > 0) {
-                $c = $result->num_rows;
-                  
+                  $c = $result->num_rows;
+
 
                   echo ' <nav aria-label="Page navigation example"> 
                  <ul class="pagination justify-content-center">
                  <li class="page-item "><a data-toggle ="tab" class="page-link" href=".p0">Previous</a></li>';
 
                   $ce = 0;
-                  $_SESSION["allpages"]=(int)( ($c / 15) + $ce);;
-                  $_SESSION["wp"]=1;
-                 
-                 // echo  $_SESSION["allpages"];
+                  $_SESSION["allpages"] = (int) (($c / 15) + $ce);;
+                  $_SESSION["wp"] = 1;
+
+                  // echo  $_SESSION["allpages"];
                   include('main-jq.php');
-                 
+
                   if ((int) ($c % 15) > 0)
                     $ce = 1;
-                    
+
                   for ($i = 0; $i < (int) ($c / 15) + $ce; $i++) {
-                    echo '<li id= "o'.($i + 1).'"  class="page-item "><a data-toggle ="tab" class="page-link" " href=".p'.($i + 1)."\""
-                    . '">' . ($i + 1) . '</a></li>';
+                    echo '<li id= "o' . ($i + 1) . '"  class="page-item "><a data-toggle ="tab" class="page-link" " href=".p' . ($i + 1) . "\""
+                      . '">' . ($i + 1) . '</a></li>';
                   }
-                //  <li class="page-item"><a class="page-link" " href=".m11" >Previous</a></li>
+                  //  <li class="page-item"><a class="page-link" " href=".m11" >Previous</a></li>
                   echo ' 
                     <li class="page-item"><a data-toggle ="tab" class="page-link" href=".p-1">Next</a></li>
                     </ul>
@@ -452,7 +525,7 @@ session_start()
                   echo '
                  <div   style="display: block"class="container p1 ">
                   <div class="row" >';
-                 
+
                   // output data of each row
                   while ($row = $result->fetch_assoc()) {
                     $count++;
@@ -470,10 +543,10 @@ session_start()
                        <p class="card-text">';
                     echo "From : " . $row['from1'] . "\t" . "To : " . $row['to1'] . "<br>"
                       . "   Address : " . $row['address1'] . " At :  " . $row['date1'] . " " . substr($row['time1'], 0, 5) . "<br>  Price : " . $row['price'] . "  Phone : " . $row['phone'];
-                       
+
 
                     echo '</p>
-                        <button class="btn btn-outline-success">Get in the car</button>
+                        <button class="btn btn-success">Get in the car</button>
                        <p class="card-text">
                          <small class="text-muted"
                            >Last updated 3 mins ago</small
@@ -485,48 +558,44 @@ session_start()
                  </div>
                </div> 
                 </div>';
-                  if (((int)($count % 15)) == 0) {
-                     
-                    echo '
-                    </div >
-                    </div >
-                   <div style="display: none" class="container p'.((int)($count / 15)+1) .'">
-                   <div class="row">';
+                    if (((int) ($count % 15)) == 0) {
 
-                  }    
-                else if ($count % 3 == 0) {
+                      echo '
+                    </div >
+                    </div >
+                   <div style="display: none" class="container p' . ((int) ($count / 15) + 1) . '">
+                   <div class="row">';
+                    } else if ($count % 3 == 0) {
                       echo '
                       </div >
                      <div class="row">';
                     }
-                
-                }
-               echo '</div>';
+                  }
+                  echo '</div>';
                   echo '</div>';
 
                   echo ' <nav aria-label="Page navigation example"> 
                 <ul class="pagination justify-content-center">
                 <li class="page-item"><a class="page-link" href="#">Previous</a></li>';
                   $ce = 0;
-                  if ((int) ($c % 15) > 0){
+                  if ((int) ($c % 15) > 0) {
                     $ce = 1;
-                  for ($i = 0; $i < (int) ($c / 15) + $ce; $i++) {
-                    echo '<li class="page-item"><a class="page-link" href="#';
-                    echo ($i + 1) . '">' . ($i + 1) . '</a></li>';
-                  }
+                    for ($i = 0; $i < (int) ($c / 15) + $ce; $i++) {
+                      echo '<li class="page-item"><a class="page-link" href="#';
+                      echo ($i + 1) . '">' . ($i + 1) . '</a></li>';
+                    }
 
-                  echo ' 
+                    echo ' 
                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
                    </ul>
-               </nav> ';  }
-               
-                }
-                else echo "<h1>NO DATA FOUND</h1>"
+               </nav> ';
+                  }
+                } else echo "<h1>NO DATA FOUND</h1>"
 
 
                 ?>
 
-<!-- 
+                <!-- 
 <script>document.getElementById('scity').value = 'dd';</script>
 <script>  document.getElementById('ecity').value = "ll"; </script> -->
 
@@ -536,7 +605,7 @@ session_start()
 
           </div>
 
-         
+
 
 
 
@@ -574,7 +643,7 @@ session_start()
                   <div class="row ">
                     <div class="col">
                       <h4>
-                      Time
+                        Time
                       </h4>
                     </div>
                   </div>
@@ -647,7 +716,7 @@ session_start()
                     <button type="submit" class="btn btn-primary">Ctreate Trip</button>
 
                 </form>
-                
+
               </div>
 
             </div>
@@ -658,36 +727,35 @@ session_start()
     </div>
   </div>
   </div>
- 
-<script>
- $(document).ready(function(){
-  var url = document.location.toString();
-if (url.match('#')) {
-    $('#nav-tab a[href="#' + url.split('#')[1] + '"]').tab('show');
-} 
 
-// Change hash for page-reload
-$('#nav-tab a').on('shown.bs.tab', function (e) {
-//  alert(e.target.hash);
-    window.location.hash = e.target.hash;
-});
-});
+  <script>
+    $(document).ready(function() {
+      var url = document.location.toString();
+      if (url.match('#')) {
+        $('#nav-tab a[href="#' + url.split('#')[1] + '"]').tab('show');
+      }
 
-</script>
+      // Change hash for page-reload
+      $('#nav-tab a').on('shown.bs.tab', function(e) {
+        //  alert(e.target.hash);
+        window.location.hash = e.target.hash;
+      });
+    });
+  </script>
   </div>
- 
+
   <div class="container-fluid" style="background-color: white;">
 
   </div>
   </script>
- 
+
   </div>
- 
+
   <div class="container-fluid" style="background-color: white;">
 
   </div>
 
- 
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 

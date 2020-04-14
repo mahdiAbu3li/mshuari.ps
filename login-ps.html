@@ -1,95 +1,225 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://localhost:80/mshuari.ps/style-loginAndSign.css">
+    <link rel="stylesheet" href="css/bootstrap-grid.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="http://localhost:8080/mshuari.ps/style-loginAndSign.css"
+    />
 
     <title>PS-progect</title>
-</head>
+  </head>
 
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
-        <a class="navbar-brand" href="homePage.html">MSHUARI.PS</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
-
-            <div class="navbar-nav ">
-                <a class="nav-item nav-link active" href="homePage.html">Home <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="#">Contests</a>
-
-            </div>
-
-            <div class="navbar-nav">
-                <a id="nav-login" class="nav-item nav-link disabled bg-success rounded  " href="login-ps.html">Login</a>
-                <a id="nav-sign" class="nav-item nav-link bg-primary rounded " href="sign-in.php">Sign up</a>
-
-            </div>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <a class="navbar-brand" href="homePage.html">MSHUARI.PS</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div
+        class="collapse navbar-collapse justify-content-between"
+        id="navbarNavAltMarkup"
+      >
+        <div class="navbar-nav">
+          <a class="nav-item nav-link active" href="homePage.html"
+            >Home <span class="sr-only">(current)</span></a
+          >
+          <a class="nav-item nav-link" href="#">Contests</a>
         </div>
 
-
+        <div class="navbar-nav">
+          <a
+            id="nav-login"
+            class="nav-item nav-link disabled bg-success rounded"
+            href="login-ps.html"
+            >Login</a
+          >
+          <a
+            id="nav-sign"
+            class="nav-item nav-link bg-primary rounded"
+            href="sign-in.php"
+            >Sign up</a
+          >
+        </div>
+      </div>
     </nav>
 
-
-    <div class="container " style="margin-top: 100px">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-12 col-sm-8 col-md-6  ">
-                <div class="card ">
-                    <div class="card-header bg-success">
-                        <h4>Login</h4>
-                    </div>
-                    <div class="card-body ">
-
-
-                        <form action="check.php">
-                            <div class="form-row">
-                                <div class="col-2"></div>
-                                <div class="col-8 ">
-
-                                    <div class=" form-group mt-5 ">
-
-                                        <input name ="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-
-                                    </div>
-
-                                    <div class=" form-group mt-5">
-
-                                        <input name ="pass" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                                    </div>
-                                    <div class="form-check ">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">I am a Driver</label>
-                                    </div>
-                                    <button type="submit"  class="btn btn-block btn-success  mt-3 ">Login</button>
-
-                                    <a id="s" href="sign-in.html" class="btn btn-outline-primary btn-block  mtmt-2 ">Sign up </a>
-
-                                </div>
-                                <div class="col-2 "></div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+    <div class="container" style="margin-top: 100px;">
+      <div class="row">
+        <div class="col"></div>
+        <div class="col-12 col-sm-8 col-md-6">
+          <div class="card">
+            <div class="card-header bg-success">
+              <h4>Login</h4>
             </div>
-            <div class="col"></div>
+            <div class="card-body">
+              <form class="needs-validation" action="javascript:void(0);" novalidate>
+                <div class="form-row">
+                  <div class="col-2"></div>
+                  <div class="col-8">
+                    <div class="form-group mt-5">
+                      <input
+                        name="email"
+                        type="email"
+                        class="form-control"
+                        id="email1"
+                        aria-describedby="emailHelp"
+                        placeholder="Enter email"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Email or password not correct
+                      </div>
+                    </div>
+
+                    <div class="form-group mt-5">
+                      <input
+                        name="pass"
+                        type="password"
+                        class="form-control"
+                        id="pass1"
+                        placeholder="Password"
+                        required
+                      />
+                      <div class="invalid-feedback">
+                        Please write your password
+                      </div>
+                    </div>
+
+                    <button
+                      class="btn btn-block btn-success mt-3"
+                      type="submit"
+                    >
+                      Login
+                    </button>
+
+                    <a
+                      id="s"
+                      href="sign-in.php"
+                      class="btn btn-outline-primary btn-block mtmt-2"
+                      >Sign up
+                    </a>
+                  </div>
+                  <div class="col-2"></div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
+        <div class="col"></div>
+      </div>
     </div>
 
-    
+    <script>
+      var f = 1;
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function () {
+        "use strict";
+        window.addEventListener(
+          "load",
+          function () {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName("needs-validation");
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (
+              form
+            ) {
+              form.addEventListener(
+                "submit",
+                function (event) {
+                  if (form.checkValidity() === false) {
+                    f = 0;
+                    
+                    event.preventDefault();
+                    event.stopPropagation();
+                  } else {
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                      if (this.readyState == 4 && this.status == 200) {
+                        alert(this.responseText);
+                        var res = this.responseText;
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="js/bootstrap.js"></script>
-</body></html>
+                        res = res.trim();
+
+                      
+
+                        // var re = res.toString();
+                        if (res.localeCompare("f") == 0) {
+                          f = 0;
+                          
+                      
+                          $("#email1").css("border-color", "red");
+                          $("#email1").addClass("is-invalid");
+                        }
+                        else {
+                          //  header('Location: http://localhost:8080/mshuari.ps/main.php');
+                           location.replace("http://localhost:8080/mshuari.ps/main.php")
+
+                        }
+                      }
+                    };
+
+                    // xhttp.open("GET", "te.php", true);
+                    xhttp.open(
+                      "GET",
+                      "check.php?email=" +
+                        $("#email1").val() +
+                        "&pass=" +
+                        $("#pass1").val(),
+                      true
+                    );
+                    xhttp.send();
+                  }
+
+                  //   if (x.localeCompare(y) != 0) {
+                  //     event.preventDefault();
+                  //     event.stopPropagation();
+                  //     $("#email").css("border-color", "red");
+
+                  //     $("#email").addClass("is-invalid");
+                  //   }
+                  //   else if($("#pass").val() != $("#confirmpass").val()){
+                  //         alert($("#pass").val());
+                  //         event.preventDefault();
+                  //       event.stopPropagation();
+                  //     //    document.getElementById("#confirmpass").css("display","none");
+                  //      $("#confirmpass").css("border-color","red");
+                  //     $("#confirmpass").addClass("is-invalid")
+
+                  //      }
+                  form.classList.add("was-validated");
+                },
+                false
+              );
+            });
+          },
+          false
+        );
+      })();
+    </script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+   
+  </body>
+</html>

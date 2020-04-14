@@ -9,7 +9,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="http://localhost:80/mshuari.ps/style-loginAndSign.css">
+    <link rel="stylesheet" href="http://localhost:8080/mshuari.ps/style-loginAndSign.css">
 
     <title>PS-progect</title>
 </head>
@@ -54,50 +54,50 @@
                     <div class="card-body">
 
 
-                        <form action="insert.php">
+                        <form class="needs-validation" action="insert.php" novalidate>
 
                             <div class="form-row form-group">
                                 <div class="col ">
 
                                     <label for="exampleInputEmail1">First Name</label>
-                                    <input name ="fname" type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="first name">
+                                    <input name ="fname" type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="first name" required>
 
                                 </div>
                                 <div class="col">
 
 
                                     <label for="exampleInputEmail1">Last Name</label>
-                                    <input name ="lname" type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="last name">
+                                    <input name ="lname" type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="last name" required>
 
                                 </div>
                             </div>
                             <div class="form-group">
 
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input name ="email" type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input name ="email" type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
 
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Password</label>
-                                <input name ="pass" type="password" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password">
+                                <input name ="pass" type="password" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password" required>
                             </div>
                             <div class="form-group">
 
                                 <label for="exampleInputEmail1">Confirm Password</label>
-                                <input type="password" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="rewrite your password">
+                                <input type="password" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="rewrite your password" required>
                             </div>
                             <div class="form-group ">
 
 
                                 <label for="exampleInputEmail1">Your Phone Number</label>
-                                <input name ="phone" type="number" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EX:059x-xx-xx-xx">
+                                <input name ="phone" type="number" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EX:059x-xx-xx-xx" required>
                             </div>
 
                             <div class="form-row">
                                 <div class="col-5 ">
 
                                     <label for="date">Date of Birth</label>
-                                    <input name ="birth" type="date" class="form-control" id="date">
+                                    <input name ="birth" type="date" class="form-control" id="date" required>
                                 </div>
                             
                             </div>

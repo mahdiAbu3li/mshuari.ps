@@ -5,7 +5,7 @@ $servername="127.0.0.1";
 
 $username="root";
 
-$password="root";
+$password="";
 $dbname = "mshwari.ps";
 $conn= new mysqli($servername,$username,$password,$dbname);
 
@@ -19,11 +19,12 @@ if($conn->connect_error)
 $sql = "UPDATE user SET 
       first_name = '" .$_GET['fname']."', 
        last_name = '".$_GET['lname'] ."', 
+       pass = '".$_SESSION['pass']."',
        phone = '".$_GET['phone']."', 
        birthday = '". $_GET['birth']."' 
        where user.id = ".$_SESSION['id'] ;
        $conn->multi_query($sql);
      //  echo $sql;
- header('Location: http://localhost:80/mshuari.ps/main.php#nav-profile');
+ header('Location: http://localhost:8080/mshuari.ps/main.php#nav-profile');
 
 ?>

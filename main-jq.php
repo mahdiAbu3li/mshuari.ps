@@ -49,7 +49,7 @@ $(document).ready(function(){
          
          sessionStorage.setItem("wp", res);
          var o="o"+res;
-       // alert(dest+" "+res+" "+  <?php echo $_SESSION['allpages'] ;?>);
+       //alert(dest+" "+res+" "+  <?php echo $_SESSION['allpages'] ;?>);
            for( i=1;i<= (<?php echo $_SESSION['allpages'] ;?>+1);i++)
           {    
              var x=".p"+i;
@@ -69,5 +69,44 @@ $(document).ready(function(){
         });
       });
     
+</script>
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+       
+        if (form.checkValidity() === false) {
+            alert("mahdo");
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        if($("#pass").val().length < 7){
+            event.preventDefault();
+          event.stopPropagation();
+            $("#pass").css("border-color","red");
+            
+        $("#pass").addClass("is-invalid")
+
+        }
+      else if($("#pass").val() != $("#confirmpass").val()){
+            alert($("#pass").val());
+            event.preventDefault();
+          event.stopPropagation();
+        //    document.getElementById("#confirmpass").css("display","none");
+         $("#confirmpass").css("border-color","red");
+        $("#confirmpass").addClass("is-invalid")
+
+         }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
 </script>
  
