@@ -131,12 +131,13 @@
 </script>
  
 
-    });
+  
     $(document).ready(function() {
         $('.reg ').click(function() {
             var dest = $(this).attr('id');
-            var res = dest.substring(1, dest.length);
-            window.open('http://localhost/mshuari.ps/reg.php?id='+res,'blank');
+            var res = dest.substring(0, dest.length);
+            alert(dest);
+            window.open('http://localhost/mshuari.ps/reg.php?id='+dest,'blank');
             return false;
         });
     });
