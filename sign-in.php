@@ -60,46 +60,64 @@
                                 <div class="col ">
 
                                     <label for="exampleInputEmail1">First Name</label>
-                                    <input name ="fname" type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="first name" required>
-
+                                    <input name="fname" type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="first name" required>
+                                    <div class="invalid-feedback">
+                                        Enter first name
+                                    </div>
                                 </div>
                                 <div class="col">
 
 
                                     <label for="exampleInputEmail1">Last Name</label>
-                                    <input name ="lname" type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="last name" required>
-
+                                    <input name="lname" type="text" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="last name" required>
+                                    <div class="invalid-feedback">
+                                        Enter Last name
+                                    </div>
                                 </div>
                             </div>
                             <div class="form-group">
 
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input name ="email" type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-
+                                <input name="email" type="email" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                                <div class="invalid-feedback">
+                                   Enter Email 
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Password</label>
-                                <input name ="pass" type="password" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Password" required>
+                                <input name="pass" type="password" class="form-control form-control-sm" id="pass" aria-describedby="emailHelp" placeholder="Enter Password" required>
+                                <div class="invalid-feedback">
+                                    Enter password more than 6 character
+                                </div>
                             </div>
                             <div class="form-group">
 
                                 <label for="exampleInputEmail1">Confirm Password</label>
-                                <input type="password" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="rewrite your password" required>
+                                <input type="password" class="form-control form-control-sm" id="confirmpass" aria-describedby="emailHelp" placeholder="rewrite your password" required>
+                                <div class="invalid-feedback">
+                                    confirm your pass
+                                </div>
                             </div>
                             <div class="form-group ">
 
 
                                 <label for="exampleInputEmail1">Your Phone Number</label>
-                                <input name ="phone" type="number" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EX:059x-xx-xx-xx" required>
+                                <input name="phone" type="number" class="form-control form-control-sm" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="EX:059x-xx-xx-xx" required>
+                                <div class="invalid-feedback">
+                                    Enter your phone number
+                                </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="col-5 ">
 
                                     <label for="date">Date of Birth</label>
-                                    <input name ="birth" type="date" class="form-control" id="date" required>
+                                    <input name="birth" type="date" class="form-control" id="date" required>
+                                    <div class="invalid-feedback">
+                                        your birthday 
+                                    </div>
                                 </div>
-                            
+
                             </div>
 
 
@@ -126,7 +144,34 @@
             <div class="col"></div>
         </div>
     </div>
+   
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        else if($("#pass").val() != $("#confirmpass").val() || $("#pass").val().trim().length < 7){
+            $("#confirmpass").css("border-color","red");
+        $("#confirmpass").addClass("is-invalid");
+        event.preventDefault();
+          event.stopPropagation();
 
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

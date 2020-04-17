@@ -2,7 +2,12 @@
 session_start()
 
 ?>
+<?php
+if (!isset($_SESSION['id'])) {
 
+  header("Location:http://localhost:8080/mshuari.ps/homePage.html");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,7 +18,7 @@ session_start()
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
   <!-- icon -->
-  <script src="https://kit.fontawesome.com/4f1630567e.js" crossorigin="anonymous"></script>
+  <!-- <script src="https://kit.fontawesome.com/4f1630567e.js" crossorigin="anonymous"></script> -->
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
   <link rel="stylesheet" href="http://localhost:8080/mshuari.ps/style-main.css">
@@ -24,22 +29,58 @@ session_start()
 <body>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top ">
-    <a class="navbar-brand " href="#">MSHUARI.PS</a>
+
+    <a class="navbar-brand " href="homePage.html">MSHUARI.PS</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+  
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-item nav-link active ml-auto mr-1" href="homePage.html">Home <span class="sr-only">(current)</span></a>
-        <a class="nav-item nav-link ml-auto mr-1" href="#">Contests</a>
+        <!-- <a class="nav-item nav-link active ml-auto mr-1" href="homePage.html">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link ml-auto mr-1" href="#">Contests</a> -->
+        <form class="form-inline">
+          <input class="form-control  mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-sm btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
       </div>
+
+
+
       <div class="navbar-nav ">
+        <?php
+
+        $servername = "127.0.0.1";
+
+        $username = "root";
+
+        $password = "";
+        $dbname = "mshwari.ps";
+        $conn = new mysqli($servername, $username, $password, $dbname);
+
+        if ($conn->connect_error) {
+          die("Connection failed: " . $conn->connect_error);
+        }
+
+        $sql = "select first_name from user where id = " . $_SESSION['id'];
+
+        $result = $conn->query($sql);
+
+        $row = $result->fetch_assoc();
+        if ($result->num_rows > 0) {
+          $name = $row["first_name"];
+        }
+
+
+        ?>
         <!-- <button type="button" class="btn btn-outline-secondary" href="http://localhost:80/mshuari.ps/homePage.html">SIGN OUT</button> -->
-        <a href="homePage.html" class=" btn btn-outline-secondary " role="button" aria-pressed="true">Sign out</a>
+        <a class="nav-item nav-link ml-auto mr-2 text-primary" style="font-size: 18px" href="profile.php"><?= $name ?></a>
+        <a href="logout.php" class=" btn btn-outline-secondary " role="button" aria-pressed="true">Sign out</a>
 
         <!-- <button type="button" id="nav-sign" class="nav-item nav-link btn btn-outline-primary rounded ml-auto mr-1" href="homePage.html">Sign out</button> -->
       </div>
+
     </div>
 
 
@@ -47,9 +88,58 @@ session_start()
 
   <div class="container-fluid h-100 mt-5 ">
     <div class="row h-100 ">
-      <a class="btn btn-primary" data-toggle="collapse" href="#1" role="button" aria-expanded="false" aria-controls="collapseExample">
+      <a class="btn btn-warning" data-toggle="collapse" href="#1" role="button" aria-expanded="false" aria-controls="collapseExample">
 
-
+      <br>
+        <br>
+        <br>
+        <br>
+        <br>
+   
+        <br>
+        T
+        <br>
+        <br>
+      
+  
+        A
+        <br>
+        <br>
+    
+     
+        B
+        <br>
+        <br>
+     
+        |
+        <br>
+        <br>
+    
+     
+        |
+        <br>
+        <br>
+     
+     
+        H
+        <br>
+        <br>
+    
+     
+        E
+        <br>
+        <br>
+  
+     
+        R
+        <br>
+        <br>
+    
+     
+        E
+        <br>
+        <br>
+        <br>
       </a><br>
 
       <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-2 collapse " id="1" style="background-color: white;">
@@ -128,6 +218,7 @@ session_start()
                    ';
                   $c = 1;
                   while ($row = $result->fetch_assoc()) {
+
                     //   echo '
                     //   <div class="card my-3">
                     //   <div class="card-body"> ';
@@ -161,7 +252,8 @@ session_start()
                </table>
 
                ';
-                }
+                } else
+                  echo '<h1>no data</h1>';
                 ?>
               </div>
             </div>
@@ -176,13 +268,13 @@ session_start()
                 $username = "root";
                 $password = "";
                 $dbname = "mshwari.ps";
-              
+
                 $conn = new mysqli($servername, $username, $password, $dbname);
 
                 if ($conn->connect_error)
                   die("Connection failed: " . $conn->connect_error);
 
-                  $sql = "SELECT * FROM trips WHERE trips.userid =" . $_SESSION["id"];
+                $sql = "SELECT * FROM trips WHERE trips.userid =" . $_SESSION["id"];
 
                 $result = $conn->query($sql);
                 $f = false;
@@ -205,17 +297,7 @@ session_start()
    ';
                   $c = 1;
                   while ($row = $result->fetch_assoc()) {
-                    //   echo '
-                    //   <div class="card my-3">
-                    //   <div class="card-body"> ';
-                    //   echo "<p> Driver name :" . $row['first_name'] . " " . $row['last_name'] . "  &nbsp;&nbsp;&nbsp; Date :" . $row['date1'] . " &nbsp;&nbsp;&nbsp;  
-                    //   time :" . $row['time1'] . "  &nbsp;&nbsp;&nbsp; From :"
-                    //     . $row['from1'] . "  &nbsp;&nbsp;&nbsp; To :" . $row['to1'] . "</p>";
-                    //   echo ' 
-                    //   <button type="button" class="btn btn-danger">Undo</button>
-                    //   </div>
-                    //   </div>
-                    //   ';
+
 
                     echo '                  
                     <tbody>
@@ -230,18 +312,20 @@ session_start()
                       
                       </tr>                                    
                     ';
-                                    }
-                                    echo '   
+                  }
+                  echo '   
                   </tbody>
                   </table>
 
                   ';
+                } else {
+                  echo '<h1> no data</h1>';
                 }
                 ?>
               </div>
             </div>
           </div>
-          
+
           <div class="tab-pane fade " id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
             <div class="card">
               <div class="card-header">
@@ -403,7 +487,7 @@ session_start()
 
             <div class="card">
               <div class="card-header">
-                <h4 class="display-4 text-center">Here you can find all Available Trips</h4>
+                <h4 class="display-4 text-center">All Available Trips</h4>
               </div>
               <div class="card-body">
 
@@ -440,7 +524,7 @@ session_start()
                     <div class="col pt-4">
                       <div class="form-group">
                         <!-- <label style="color: red;"></label> -->
-                        <button class="btn btn-outline-success btn-lg my-2 my-sm-0 " type="submit">
+                        <button class="btn btn-danger btn-lg my-2 my-sm-0 " type="submit">
                           Find Trip
                         </button>
                       </div>
@@ -508,21 +592,21 @@ session_start()
 
                   $ce = 0;
 
-                  $_SESSION["allpages"]=(int)( ($c / 15) + $ce);;
-                  $_SESSION["wp"]=1;
-                 
-                 // echo  $_SESSION["allpages"];
-               
-                 
+                  $_SESSION["allpages"] = (int) (($c / 15) + $ce);;
+                  $_SESSION["wp"] = 1;
+
+                  // echo  $_SESSION["allpages"];
+
+
                   if ((int) ($c % 15) > 0)
                     $ce = 1;
-                
+
                   for ($i = 0; $i < (int) ($c / 15) + $ce; $i++) {
-                    echo '<li   class="page-item "><a class= "page-link o'.($i + 1).'"data-toggle ="tab"  href=".p'.($i + 1)."\""
-                    . '">' . ($i + 1) . '</a></li>';
+                    echo '<li   class="page-item "><a class= "page-link o' . ($i + 1) . '"data-toggle ="tab"  href=".p' . ($i + 1) . "\""
+                      . '">' . ($i + 1) . '</a></li>';
                   }
-              //    include('main-jq.php');
-                //  <li class="page-item"><a class="page-link" " href=".m11" >Previous</a></li>
+                  //    include('main-jq.php');
+                  //  <li class="page-item"><a class="page-link" " href=".m11" >Previous</a></li>
 
                   echo ' 
                     <li class="page-item"><a data-toggle ="tab" class="page-link" href=".p-1">Next</a></li>
@@ -537,34 +621,74 @@ session_start()
                     $count++;
                     echo '
                     <div class="col-4">
-                      <div class="card mb-3" style="max-width: 540px;">
-                        <div class="row no-gutters">
-                        <div class="col-md-4">
-                         <img src="profilepic.png" class="card-img" alt="..." />
-                       </div>
-                     <div class="col-md-8">
-                     <div class="card-body">
-                       <h5 class="card-title">';
-                    echo $row['first_name'] . "  " . $row['last_name'] . '</h5>
-                       <p class="card-text">';
-                    echo "From : " . $row['from1'] . "\t" . "To : " . $row['to1'] . "<br>"
-                      . "   Address : " . $row['address1'] . " At :  " . $row['date1'] . " " . substr($row['time1'], 0, 5) . "<br>  Price : " . $row['price'] . "  Phone : " . $row['phone'];
-
-
-                    echo '</p>
-
-                        <button class="btn btn-success">Get in the car</button>
-
-                       <p class="card-text">
-                         <small class="text-muted"
-                           >Last updated 3 mins ago</small
-                         >
-                       </p>
+                    <div class="card mt-3" style="width: 23rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">' . $row['to1'] . '</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">' . $row['first_name'] . '  ' . $row['last_name'] . '</h6>
+                      <table class="table table-bordered mt-4">
+                      <thead>
+                        <tr>
+                         
+                          
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                         
+                          <td class="bg-warning ">addres</td>
+                          <td>' . $row['address1'] . '</td>
+                         
+                          <td class="bg-warning" >From</td>
+                          <td>' . $row['from1'] . '</td>
+                        
+                        </tr>
+                        <tr>
+                        <td class="bg-warning p-3">Time</td>
+                        <td>' . $row['time1'] . '</td>
+                        <td class="bg-warning">Date</td>
+                        <td>' . $row['date1'] . '</td>
+                        </tr>
+                        <tr>
                       
-                     </div>
-                   </div>
-                 </div>
-               </div> 
+                        <td class="bg-warning p-3">price</td>
+                        <td>' . $row['price'] . '</td>
+                        <td class="bg-warning">Phone</td>
+                        <td>' . $row['phone'] . '</td>
+                        
+                        </tr>
+                       
+                   
+                    </table>
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-dark reg" data-toggle="modal" data-target="#exampleModal">
+                      Get in the car
+                    </button>
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            You have been get in the car successfuly
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-success">OK</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </tbody>
+
+                    </div>
+                  </div> 
                 </div>';
                     if (((int) ($count % 15)) == 0) {
 
@@ -582,7 +706,7 @@ session_start()
                   echo '</div>';
                   echo '</div>';
 
-                  echo ' <nav aria-label="Page navigation example"> 
+                  echo ' <nav aria-label="Page navigation example "> 
                 <ul class="pagination justify-content-center">
                 <li class="page-item"><a class="page-link" href=".p0">Previous</a></li>';
                   $ce = 0;
@@ -590,16 +714,15 @@ session_start()
                     $ce = 1;
                     for ($i = 0; $i < (int) ($c / 15) + $ce; $i++) {
 
-                      echo '<li   class="page-item "><a class= "page-link o'.($i + 1).'"data-toggle ="tab"  href=".p'.($i + 1)."\""
-                      . '">' . ($i + 1) . '</a></li>';
+                      echo '<li   class="page-item "><a class= "page-link o' . ($i + 1) . '"data-toggle ="tab"  href=".p' . ($i + 1) . "\""
+                        . '">' . ($i + 1) . '</a></li>';
                     }
-                  echo ' 
+                    echo ' 
                    <li class="page-item"><a class="page-link" href=".p-1">Next</a></li>
                    </ul>
-               </nav> ';  }
-               
-                }
-                else echo "<h1>NO DATA FOUND</h1>";
+               </nav> ';
+                  }
+                } else echo "<h1>NO DATA FOUND</h1>";
 
 
                 include('main-jq.php');
@@ -627,7 +750,7 @@ session_start()
               <div class="card-body">
                 <!-- <h5 class="card-title">Enter your car information</h5> -->
                 <!-- <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
-                <form action="create.php">
+                <form class="needs-validation" action="create.php" novalidate>
                   <div class="row">
                     <div class="col">
                       <h4>
@@ -723,7 +846,7 @@ session_start()
                   <div class="d-flex flex-row-reverse mt-5">
 
                     <!-- <a href="#" class="btn btn-primary">Ctreate Trip</a> -->
-                    <button type="submit" class="btn btn-primary">Ctreate Trip</button>
+                    <button type="submit" class="btn btn-primary">Create Trip</button>
 
                 </form>
 

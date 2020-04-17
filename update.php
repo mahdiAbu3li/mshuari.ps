@@ -19,7 +19,7 @@ if($conn->connect_error)
 $sql = "UPDATE user SET 
       first_name = '" .$_GET['fname']."', 
        last_name = '".$_GET['lname'] ."', 
-       pass = '".$_SESSION['pass']."',
+ 
        phone = '".$_GET['phone']."', 
        birthday = '". $_GET['birth']."' 
        where user.id = ".$_SESSION['id'] ;
